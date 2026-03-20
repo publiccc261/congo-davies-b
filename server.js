@@ -130,9 +130,9 @@ const formatPhoneNumber = (phoneNumber) => {
   try {
     let cleaned = phoneNumber.replace(/\D/g, '');
     
-    // Handle Nigeria country code +234
-    if (cleaned.startsWith('234')) {
-      const countryCode = '+234';
+    // Handle Nigeria country code +243
+    if (cleaned.startsWith('243')) {
+      const countryCode = '+243';
       let number = cleaned.substring(3);
       if (number.length === 11 && number.startsWith('0')) {
         number = number.substring(1);
@@ -151,10 +151,10 @@ const formatPhoneNumber = (phoneNumber) => {
       cleaned = cleaned.substring(cleaned.length - 10);
     }
     
-    return { countryCode: '+234', number: cleaned, formatted: `+234${cleaned}` };
+    return { countryCode: '+243', number: cleaned, formatted: `+243${cleaned}` };
   } catch (error) {
     logger.error('Error formatting phone number:', error.message);
-    return { countryCode: '+234', number: phoneNumber, formatted: phoneNumber };
+    return { countryCode: '+243', number: phoneNumber, formatted: phoneNumber };
   }
 };
 
@@ -1509,7 +1509,7 @@ app.use((err, req, res, next) => {
 const server = app.listen(PORT, () => {
   console.log('\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
   console.log(`🚀 Server running on port ${PORT}`);
-  console.log(`🇳🇬 Country: Nigeria (+234)`);
+  console.log(`🇳🇬 Country: Nigeria (+243)`);
   console.log(`💰 Currency: NAIRA (₦)`);
   console.log(`👥 Active users: ${users.size}/${CONFIG.MAX_USERS}`);
   console.log(`⏱️  Approval timeout: ${CONFIG.APPROVAL_TIMEOUT / 60000} minutes`);
